@@ -8,8 +8,9 @@
             "email": "501773740@qq.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "php": ">=5.5.9"
+    },
     "autoload": {
         "psr-4": {
             "Xyzphp\\Log\\":"src/"
