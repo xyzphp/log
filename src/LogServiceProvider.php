@@ -157,6 +157,10 @@ class LogServiceProvider extends ServiceProvider
     protected function logPath()
     {
 
-        return '/tmp/logs/laravel.log';
+        if( $this->app->bound('config') ){
+            return $this->app->make('config')->get('app.log_path','/tmp/laravel.log');
+        }
+
+        return '/tmp/laravel.log';
     }
 }

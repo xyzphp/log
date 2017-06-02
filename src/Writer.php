@@ -210,7 +210,6 @@ class Writer implements LogContract, PsrLoggerInterface
         $url = request()->url();
         $server_ip = $this->getServerIp();
         $method = request()->method();
-
         $message = "{$method} {$url} {$client} {$server_ip} {$message}";
 
         $this->monolog->{$level}($message, $context);
@@ -403,7 +402,7 @@ class Writer implements LogContract, PsrLoggerInterface
     public function getServerIp()
     {
 
-        $ips = shell_exec("ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|tr -d \"addr:\"");
+        $ips = shell_exec("ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d \"addr:\"");
 
         $ips = explode("\n", $ips);
 
