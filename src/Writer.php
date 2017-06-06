@@ -16,7 +16,6 @@ use Monolog\Handler\SyslogHandler;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\ErrorLogHandler;
 use Monolog\Logger as MonologLogger;
-use Illuminate\Log\Events\MessageLogged;
 use Monolog\Handler\RotatingFileHandler;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -61,7 +60,6 @@ class Writer implements LogContract, PsrLoggerInterface
      *
      * @param  \Monolog\Logger $monolog
      * @param  \Illuminate\Contracts\Events\Dispatcher $dispatcher
-     * @return void
      */
     public function __construct(MonologLogger $monolog, Dispatcher $dispatcher = null)
     {
@@ -289,7 +287,7 @@ class Writer implements LogContract, PsrLoggerInterface
             throw new RuntimeException('Events dispatcher has not been set.');
         }
 
-        $this->dispatcher->listen(MessageLogged::class, $callback);
+//        $this->dispatcher->listen(MessageLogged::class, $callback);
     }
 
     /**
@@ -306,7 +304,7 @@ class Writer implements LogContract, PsrLoggerInterface
         // log listeners. These are useful for building profilers or other tools
         // that aggregate all of the log messages for a given "request" cycle.
         if (isset($this->dispatcher)) {
-            $this->dispatcher->dispatch(new MessageLogged($level, $message, $context));
+//            $this->dispatcher->dispatch(new MessageLogged($level, $message, $context));
         }
     }
 
