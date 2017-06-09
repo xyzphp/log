@@ -399,6 +399,10 @@ class Writer implements LogContract, PsrLoggerInterface
      */
     public function getServerIp()
     {
+        if ($ip = request()->server->get('SERVER_ADDR')) {
+            return $ip;
+        }
+
 
         $ips = shell_exec("ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d \"addr:\"");
 
