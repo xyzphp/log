@@ -3,7 +3,7 @@
 
 log support in laravel
 
-### 用法
+### 安装/配置
 
 ```
 composer require xyzphp/log
@@ -31,3 +31,25 @@ composer require xyzphp/log
 ```
         APP_LOG_LEVEL=/tmp/xyzphp.log
 ```
+
+### 使用
+```php
+    $data = ['name'=>'xyz','sex'=>'男'];
+    
+    info("info_message",$data);              //记录info 级别的日志
+    notice("notice_message",$data);          //记录notice 级别的日志
+    debug("debug_message",$data);            //记录debug 级别的日志
+    warning("warning_message",$data);        //记录warning 级别的日志
+    critical("critical_message",$data);      //记录critical 级别的日志
+    alert("alert_message",$data);            //记录alert 级别的日志
+    emergency("emergency_message",$data);    //记录emergency 级别的日志
+```
+
+### 记录格式
+```log
+    {date} {time} {project_name} {level} {method} {request_url} {cli_ip} {server_ip} {message} {data}
+    2017-06-12 15:21:01 ucenter INFO GET http://localhost 127.0.0.1 10.118.1.173 info_message {"name":"xyz","sex":"男"} 
+```
+
+
+
