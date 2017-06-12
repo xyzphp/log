@@ -29,7 +29,7 @@ composer require xyzphp/log
 
 编辑 `.env` 文件
 ```
-        APP_LOG_LEVEL=/tmp/xyzphp.log
+        APP_LOG_PATH=/tmp/xyzphp.log
 ```
 
 ### 使用
